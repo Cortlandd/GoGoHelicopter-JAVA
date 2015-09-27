@@ -1,10 +1,9 @@
-package com.kilobolt.screens;
+package com.game.gogohelicopter.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-
-import com.kilobolt.gameworld.*;
+import com.game.gogohelicopter.gameworld.*;
 
 public class GameScreen implements Screen {
 	

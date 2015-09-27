@@ -2,7 +2,7 @@ package com.game.gogohelicopter;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.kilobolt.screens.GameScreen;
+import com.game.gogohelicopter.screens.GameScreen;
 
 public class GGHGame extends Game {
 

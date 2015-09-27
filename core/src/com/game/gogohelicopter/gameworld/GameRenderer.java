@@ -1,6 +1,6 @@
 // Render the objects inside the game n shit
 
-package com.kilobolt.gameworld;
+package com.game.gogohelicopter.gameworld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -26,14 +26,14 @@ public class GameRenderer {
 		Gdx.app.log("GameRenderer", "render");
 
         /*
-         * 1. We draw a black background. This prevents flickering.
+         * 1. Draw a black background. This prevents flickering.
          */
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         /*
-         * 2. We draw the Filled rectangle
+         * 2. Draw the Filled rectangle
          */
 
         // Tells shapeRenderer to begin drawing filled shapes
@@ -51,7 +51,7 @@ public class GameRenderer {
         shapeRenderer.end();
 
         /*
-         * 3. We draw the rectangle's outline
+         * 3. Draw the rectangle's outline
          */
 
         // Tells shapeRenderer to draw an outline of the following shapes
