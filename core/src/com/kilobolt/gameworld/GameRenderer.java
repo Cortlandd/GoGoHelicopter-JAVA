@@ -1,3 +1,5 @@
+// Render the objects inside the game n shit
+
 package com.kilobolt.gameworld;
 
 import com.badlogic.gdx.Gdx;
