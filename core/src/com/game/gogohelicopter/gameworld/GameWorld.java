@@ -13,24 +13,31 @@
  * collection, you need to avoid allocating new objects whenever possible.
  * 
  */
+
 package com.game.gogohelicopter.gameworld;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Rectangle;
+import com.game.gogohelicopter.objects.Helicopter;
 
 public class GameWorld {
 	
-	private Rectangle rect = new Rectangle(0, 0, 17, 12);
+	private Helicopter helicopter;
+	
+	public GameWorld(int midPointY) {
+		// Initialize Helicopter
+		// x = 33 | where the bird stays the entire time
+		// y = midPointY - 5
+		// width = 17
+		// height = 12
+		helicopter = new Helicopter(33, midPointY - 5, 17, 12);
+	}
 	
 	public void update(float delta) {
-		Gdx.app.log("GameWorld", "update");
-		rect.x++;
-		if (rect.x > 137) {
-			rect.x = 0;
-		}
+		helicopter.update(delta);
 	}
-
-	public Rectangle getRect() {
-		return rect;
+	
+	// Getter method
+	public Helicopter getHelicopter() {
+		return helicopter;
 	}
 }

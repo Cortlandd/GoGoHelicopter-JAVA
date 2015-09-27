@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.game.gogohelicopter.gameworld.*;
+import com.game.gogohelicopter.gghhelpers.InputHandler;
 
 public class GameScreen implements Screen {
 	
@@ -11,9 +12,25 @@ public class GameScreen implements Screen {
 	private GameRenderer renderer;
 	
 	public GameScreen() {
-		Gdx.app.log("GameScreen", "Attached");
-		world 	 = new GameWorld();
+		float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        float gameWidth = 136;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
+
+        int midPointY = (int) (gameHeight / 2);
+
+        world = new GameWorld(midPointY);
 		renderer = new GameRenderer(world);
+		
+		Gdx.input.setInputProcessor(new InputHandler(world.getHelicopter()));
+		// Above line^ = 
+		/* 
+		 * Helicopter helicopter = world.getHelicopter();
+		 * InputHandler handler = new InputHandler(helicopter);
+		 * Gdx.input.setInputProcessor(handler);
+		 * 
+		 * But simplified
+		 */
 	}
 
 	@Override
