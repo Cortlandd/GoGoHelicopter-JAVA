@@ -4,7 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 
+import com.kilobolt.gameworld.*;
+
 public class GameScreen implements Screen {
+	
+	private GameWorld world;
+	private GameRenderer renderer;
 	
 	public GameScreen() {
 		Gdx.app.log("GameScreen", "Attached");
