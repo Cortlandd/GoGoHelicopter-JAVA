@@ -13,6 +13,8 @@ public class GameScreen implements Screen {
 	
 	public GameScreen() {
 		Gdx.app.log("GameScreen", "Attached");
+		world 	 = new GameWorld();
+		renderer = new GameRenderer(world);
 	}
 
 	@Override
@@ -23,12 +25,20 @@ public class GameScreen implements Screen {
 	// Will basically be the game loop
 	@Override
 	public void render(float delta) {
+		world.update(delta);
+		renderer.render();
+		
+		/*
+		Show FPS
+		
 		// Sets a Color to Fill the Screen with (RGB = 10, 15, 230), Opacity of 1 (100%)
 	    Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
 	    // Fills the screen with the selected color
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	    // Covert Frame rate to String, print it
 	    Gdx.app.log("GameScreen FPS", (1/delta) + "");
+	    
+	    */
 	}
 
 	@Override

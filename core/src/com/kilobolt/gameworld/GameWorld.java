@@ -1,6 +1,10 @@
 package com.kilobolt.gameworld;
 
+import com.badlogic.gdx.Gdx;
+
 public class GameWorld {
-	// When GameScreen is created, we must create a
-	// new GameWorld object and a new GameRenderer object.
+	
+	public void update(float delta) {
+		Gdx.app.log("GameWorld", "update");
+	}
 }
