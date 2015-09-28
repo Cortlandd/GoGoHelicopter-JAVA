@@ -1,5 +1,6 @@
 package com.game.gogohelicopter.objects;
 
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Helicopter {
@@ -13,6 +14,8 @@ public class Helicopter {
 	private int width;
 	private int height;
 	
+	private Circle boundingCircle;
+	
 	public Helicopter(float x, float y, int width, int height) {
 		// - what its X position should be
 		// - what its Y position should be
@@ -24,6 +27,7 @@ public class Helicopter {
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 460);
+        boundingCircle = new Circle();
 		
 	}
 	
@@ -56,6 +60,10 @@ public class Helicopter {
         }
 
         position.add(velocity.cpy().scl(delta));
+        
+        // Set the circle's center to be (9, 6) with respect to the bird.
+        // Set the circle's radius to be 6.5f;
+        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
 
         // Rotate counterclockwise
         if (velocity.y < 0) {
@@ -108,6 +116,9 @@ public class Helicopter {
     public float getRotation() {
         return rotation;
     }
-	
+    
+    public Circle getBoundingCircle() {
+    	return boundingCircle;
+    }
 	
 }
