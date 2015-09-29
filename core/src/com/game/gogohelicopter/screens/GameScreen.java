@@ -23,7 +23,7 @@ public class GameScreen implements Screen {
         world = new GameWorld(midPointY);
 		renderer = new GameRenderer(world, (int) gameHeight, midPointY);
 		
-		Gdx.input.setInputProcessor(new InputHandler(world.getHelicopter()));
+		Gdx.input.setInputProcessor(new InputHandler(world));
 		// Above line^ = 
 		/* 
 		 * Helicopter helicopter = world.getHelicopter();
@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		Gdx.app.log("GameScreen", "show called");
+		System.out.println("GameScreen - show called");
 	}
 
 	// Will basically be the game loop
@@ -49,22 +49,22 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		Gdx.app.log("GameScreen", "resizing");
+		System.out.println("GameScreen - resizing");
 	}
 
 	@Override
 	public void pause() {
-		Gdx.app.log("GameScreen", "pause called");
+		System.out.println("GameScreen - pause called");
 	}
 
 	@Override
 	public void resume() {
-		Gdx.app.log("GameScreen", "resume called");
+		System.out.println("GameScreen - resume called");
 	}
 
 	@Override
 	public void hide() {
-		Gdx.app.log("GameScreen", "hide called");
+		System.out.println("GameScreen - hide called");
 	}
 
 	@Override

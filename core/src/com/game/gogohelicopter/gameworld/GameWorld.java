@@ -30,11 +30,21 @@ public class GameWorld {
 	
 	private Rectangle ground;
 	
+	private int midPointY;
+	
 	// Create the initial score
 	private int score = 0;
 	
+	// Gamestate
+	private GameState currentState;
+	
+	public enum GameState {
+		READY, RUNNING, GAMEOVER
+	}
+	
 	public GameWorld(int midPointY) {
-		// Initialize Helicopter
+		currentState = GameState.READY;
+		// Initialize Helicopter and its position
 		helicopter = new Helicopter(33, midPointY - 5, 17, 12);
 		// The grass should start 66 pixels below the midPointY
 		scroller = new ScrollHandler(this, midPointY + 66);
@@ -44,6 +54,23 @@ public class GameWorld {
 	
 	public void update(float delta) {
 		
+		switch (currentState) {
+		case READY:
+			updateReady(delta);
+			break;
+			
+		case RUNNING:
+		default:
+			updateRunning(delta);
+			break;
+		}
+	}
+	
+	private void updateReady(float delta) {
+		
+	}
+	
+	private void updateRunning(float delta) {
 		// Add a delta cap so that if the game takes too long
 		// to update, it won't break the collision detection
 		
@@ -66,8 +93,10 @@ public class GameWorld {
 			scroller.stop();
 			helicopter.die();
 			helicopter.decelerate();
+			currentState = GameState.GAMEOVER;
 		}
 	}
+	
 	
 	// Getter methods
 	public Helicopter getHelicopter() {
@@ -85,4 +114,24 @@ public class GameWorld {
 	public void addScore(int increment) {
 		score += increment;
 	}
+	
+	public boolean isReady() {
+		return currentState == GameState.READY;
+	}
+	
+	public void start() {
+		currentState = GameState.RUNNING;
+	}
+	
+	public void restart() {
+		currentState = GameState.READY;
+        score = 0;
+        helicopter.onRestart(midPointY - 5);
+        scroller.onRestart();
+        currentState = GameState.READY;
+    }
+
+    public boolean isGameOver() {
+        return currentState == GameState.GAMEOVER;
+    }
 }
