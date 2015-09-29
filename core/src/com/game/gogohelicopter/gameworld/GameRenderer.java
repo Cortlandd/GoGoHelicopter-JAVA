@@ -111,22 +111,49 @@ public class GameRenderer {
         
         if (myWorld.isReady()) {
             // Draw shadow first
-            AssetLoader.shadow.draw(batcher, "Touch me", (136 / 2)
-                    - (42), 76);
+            AssetLoader.shadow.draw(batcher, "Touch me", (136 / 2) - (42), 76);
             // Draw text
-            AssetLoader.font.draw(batcher, "Touch me", (136 / 2)
-                    - (42 - 1), 75);
+            AssetLoader.font
+                    .draw(batcher, "Touch me", (136 / 2) - (42 - 1), 75);
         } else {
 
-            if (myWorld.isGameOver()) {
-                AssetLoader.shadow.draw(batcher, "Game Over", 25, 56);
-                AssetLoader.font.draw(batcher, "Game Over", 24, 55);
-                
+            if (myWorld.isGameOver() || myWorld.isHighScore()) {
+
+                if (myWorld.isGameOver()) {
+                    AssetLoader.shadow.draw(batcher, "Game Over", 25, 56);
+                    AssetLoader.font.draw(batcher, "Game Over", 24, 55);
+
+                    AssetLoader.shadow.draw(batcher, "High Score:", 23, 106);
+                    AssetLoader.font.draw(batcher, "High Score:", 22, 105);
+
+                    String highScore = AssetLoader.getHighScore() + "";
+
+                    // Draw shadow first
+                    AssetLoader.shadow.draw(batcher, highScore, (136 / 2)
+                            - (3 * highScore.length()), 128);
+                    // Draw text
+                    AssetLoader.font.draw(batcher, highScore, (136 / 2)
+                            - (3 * highScore.length() - 1), 127);
+                } else {
+                    AssetLoader.shadow.draw(batcher, "High Score!", 19, 56);
+                    AssetLoader.font.draw(batcher, "High Score!", 18, 55);
+                }
+
                 AssetLoader.shadow.draw(batcher, "Try again?", 23, 76);
                 AssetLoader.font.draw(batcher, "Try again?", 24, 75);
-                
+
+                // Convert integer into String
+                String score = myWorld.getScore() + "";
+
+                // Draw shadow first
+                AssetLoader.shadow.draw(batcher, score,
+                        (136 / 2) - (3 * score.length()), 12);
+                // Draw text
+                AssetLoader.font.draw(batcher, score,
+                        (136 / 2) - (3 * score.length() - 1), 11);
+
             }
-            
+
             // Convert integer into String
             String score = myWorld.getScore() + "";
 
@@ -136,8 +163,9 @@ public class GameRenderer {
             // Draw text
             AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
                     - (3 * score.length() - 1), 11);
+
         }
-       
+
         batcher.end();
 
     }

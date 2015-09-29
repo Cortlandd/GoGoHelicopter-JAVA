@@ -24,7 +24,7 @@ public class InputHandler implements InputProcessor {
 
         myHelicopter.onClick();
 
-        if (myWorld.isGameOver()) {
+        if (myWorld.isGameOver() || myWorld.isHighScore()) {
             // Reset all variables, go to GameState.READ
             myWorld.restart();
         }
