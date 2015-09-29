@@ -17,6 +17,7 @@
 package com.game.gogohelicopter.gameworld;
 
 import com.badlogic.gdx.Gdx;
+import com.game.gogohelicopter.gghhelpers.AssetLoader;
 import com.game.gogohelicopter.objects.Helicopter;
 import com.game.gogohelicopter.objects.ScrollHandler;
 
@@ -25,12 +26,10 @@ public class GameWorld {
 	private Helicopter helicopter;
 	private ScrollHandler scroller;
 	
+	private boolean isAlive = true;
+	
 	public GameWorld(int midPointY) {
 		// Initialize Helicopter
-		// x = 33 | where the bird stays the entire time
-		// y = midPointY - 5
-		// width = 17
-		// height = 12
 		helicopter = new Helicopter(33, midPointY - 5, 17, 12);
 		// The grass should start 66 pixels below the midPointY
 		scroller = new ScrollHandler(midPointY + 66);
@@ -41,9 +40,12 @@ public class GameWorld {
 		helicopter.update(delta);
 		scroller.update(delta);
 		
-		if (scroller.collides(helicopter)) {
+		// is helicopter is still flying and then collides with the buildings
+		if (scroller.collides(helicopter) && isAlive) {
 			// Clean up on game over
 			scroller.stop();
+			AssetLoader.dead.play();
+			isAlive = false;
 		}
 	}
 	
