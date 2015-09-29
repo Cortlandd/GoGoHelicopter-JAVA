@@ -10,7 +10,7 @@ public class GameScreen implements Screen {
 	
 	private GameWorld world;
 	private GameRenderer renderer;
-	private float runTime;
+	private float runTime = 0;
 	
 	public GameScreen() {
 		float screenWidth = Gdx.graphics.getWidth();
@@ -24,14 +24,6 @@ public class GameScreen implements Screen {
 		renderer = new GameRenderer(world, (int) gameHeight, midPointY);
 		
 		Gdx.input.setInputProcessor(new InputHandler(world));
-		// Above line^ = 
-		/* 
-		 * Helicopter helicopter = world.getHelicopter();
-		 * InputHandler handler = new InputHandler(helicopter);
-		 * Gdx.input.setInputProcessor(handler);
-		 * 
-		 * But simplified
-		 */
 	}
 
 	@Override

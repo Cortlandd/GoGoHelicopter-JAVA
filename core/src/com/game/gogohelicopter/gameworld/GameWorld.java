@@ -43,13 +43,14 @@ public class GameWorld {
 	}
 	
 	public GameWorld(int midPointY) {
-		currentState = GameState.READY;
+		this.midPointY = midPointY;
 		// Initialize Helicopter and its position
 		helicopter = new Helicopter(33, midPointY - 5, 17, 12);
 		// The grass should start 66 pixels below the midPointY
 		scroller = new ScrollHandler(this, midPointY + 66);
 		// Ground
 		ground = new Rectangle(0, midPointY + 66, 136, 11);
+		currentState = GameState.READY;
 	}
 	
 	public void update(float delta) {

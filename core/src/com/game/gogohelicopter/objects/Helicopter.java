@@ -73,14 +73,6 @@ public class Helicopter {
                 rotation = 5;
             }
         }
-
-        // Rotate clockwise
-        if (isFalling()) {
-            rotation += 480 * delta;
-            if (rotation > 45) {
-                rotation = 45;
-            }
-        }
         
         if (isFalling() || !isAlive) {
         	rotation += 480 * delta;
