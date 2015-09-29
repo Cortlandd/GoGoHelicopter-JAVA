@@ -62,6 +62,12 @@ public class Helicopter {
         if (velocity.y > 200) {
             velocity.y = 200;
         }
+        
+        // Ceiling Check
+        if (position.y < -13) {
+        	position.y = -13;
+        	velocity.y = 0;
+        }
 
         position.add(velocity.cpy().scl(delta));
         
