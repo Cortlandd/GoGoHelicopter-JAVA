@@ -2,6 +2,7 @@ package com.game.gogohelicopter.objects;
 
 import java.util.Random;
 
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Pipe extends Scrollable {
@@ -60,6 +61,18 @@ public class Pipe extends Scrollable {
         super.reset(newX);
         // Change the height to a random number
         height = r.nextInt(90) + 15;
+    }
+    
+    // Begin by checking if the position.x is less than helicopter.getX + 
+    // helicopter.getWidth, because otherwise, collision is impossible
+    public boolean collides(Helicopter helicopter) {
+        if (position.x < helicopter.getX() + helicopter.getWidth()) {
+            return (Intersector.overlaps(helicopter.getBoundingCircle(), barUp)
+                    || Intersector.overlaps(helicopter.getBoundingCircle(), barDown)
+                    || Intersector.overlaps(helicopter.getBoundingCircle(), skullUp) || Intersector
+                        .overlaps(helicopter.getBoundingCircle(), skullDown));
+        }
+        return false;
     }
     
     public Rectangle getSkullUp() {

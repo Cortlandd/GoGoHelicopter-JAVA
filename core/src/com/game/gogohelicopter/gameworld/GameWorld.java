@@ -40,6 +40,11 @@ public class GameWorld {
 	public void update(float delta) {
 		helicopter.update(delta);
 		scroller.update(delta);
+		
+		if (scroller.collides(helicopter)) {
+			// Clean up on game over
+			scroller.stop();
+		}
 	}
 	
 	// Getter method

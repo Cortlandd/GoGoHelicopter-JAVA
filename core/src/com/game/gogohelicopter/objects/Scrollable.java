@@ -33,6 +33,10 @@ public class Scrollable {
         position.x = newX;
         isScrolledLeft = false;
     }
+    
+    public void stop() {
+    	velocity.x = 0;
+    }
 
     // Getters for instance variables
     public boolean isScrolledLeft() {
