@@ -30,11 +30,14 @@ public class GameWorld {
 	
 	private Rectangle ground;
 	
+	// Create the initial score
+	private int score = 0;
+	
 	public GameWorld(int midPointY) {
 		// Initialize Helicopter
 		helicopter = new Helicopter(33, midPointY - 5, 17, 12);
 		// The grass should start 66 pixels below the midPointY
-		scroller = new ScrollHandler(midPointY + 66);
+		scroller = new ScrollHandler(this, midPointY + 66);
 		// Ground
 		ground = new Rectangle(0, midPointY + 66, 136, 11);
 	}
@@ -66,7 +69,7 @@ public class GameWorld {
 		}
 	}
 	
-	// Getter method
+	// Getter methods
 	public Helicopter getHelicopter() {
 		return helicopter;
 	}
@@ -74,4 +77,12 @@ public class GameWorld {
 	public ScrollHandler getScroller() {
         return scroller;
     }
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public void addScore(int increment) {
+		score += increment;
+	}
 }

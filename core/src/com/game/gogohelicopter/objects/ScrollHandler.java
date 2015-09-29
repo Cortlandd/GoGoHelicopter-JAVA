@@ -1,13 +1,21 @@
 package com.game.gogohelicopter.objects;
 
+import com.game.gogohelicopter.gameworld.GameWorld;
+import com.game.gogohelicopter.gghhelpers.AssetLoader;
+
 public class ScrollHandler {
 
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
     public static final int SCROLL_SPEED = -80;
     public static final int PIPE_GAP = 49;
+    
+    private GameWorld gameWorld;
 
-    public ScrollHandler(float yPos) {
+    public ScrollHandler(GameWorld gameWorld, float yPos) {
+    	// Reference the GameWorld to be able to increment the score
+    	this.gameWorld = gameWorld;
+    	
     	frontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), yPos, 143, 11,
                 SCROLL_SPEED);
@@ -57,9 +65,37 @@ public class ScrollHandler {
     }
 
     public boolean collides(Helicopter helicopter) {
+    	if (!pipe1.isScored()
+                && pipe1.getX() + (pipe1.getWidth() / 2) < helicopter.getX()
+                        + helicopter.getWidth()) {
+            addScore(1);
+            pipe1.setScored(true);
+            // Not sure if want coin sound
+            // AssetLoader.coin.play();
+        } else if (!pipe2.isScored()
+                && pipe2.getX() + (pipe2.getWidth() / 2) < helicopter.getX()
+                        + helicopter.getWidth()) {
+            addScore(1);
+            pipe2.setScored(true);
+            // AssetLoader.coin.play();
+
+        } else if (!pipe3.isScored()
+                && pipe3.getX() + (pipe3.getWidth() / 2) < helicopter.getX()
+                        + helicopter.getWidth()) {
+            addScore(1);
+            pipe3.setScored(true);
+            // AssetLoader.coin.play();
+
+        }
+
         return (pipe1.collides(helicopter) || pipe2.collides(helicopter) || pipe3
                 .collides(helicopter));
     }
+    
+    private void addScore(int increment) {
+        gameWorld.addScore(increment);
+    }
+
 
     public Grass getFrontGrass() {
         return frontGrass;

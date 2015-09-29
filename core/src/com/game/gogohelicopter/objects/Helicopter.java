@@ -73,8 +73,8 @@ public class Helicopter {
         if (velocity.y < 0) {
             rotation -= 600 * delta;
 
-            if (rotation < -2) {
-                rotation = -2;
+            if (rotation < 1) {
+                rotation = 1;
             }
         }
 

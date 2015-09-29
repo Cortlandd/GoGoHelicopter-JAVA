@@ -10,11 +10,14 @@ public class Pipe extends Scrollable {
     private Random r;
     
     private Rectangle skullUp, skullDown, barUp, barDown;
+    
     private float groundY;
     
     public static final int VERTICAL_GAP = 45;
     public static final int SKULL_WIDTH = 24;
     public static final int SKULL_HEIGHT = 11;
+    
+    private boolean isScored = false;
     
 
     // When Pipe's constructor is invoked, invoke the super (Scrollable)
@@ -61,6 +64,7 @@ public class Pipe extends Scrollable {
         super.reset(newX);
         // Change the height to a random number
         height = r.nextInt(90) + 15;
+        isScored = false;
     }
     
     // Begin by checking if the position.x is less than helicopter.getX + 
@@ -73,6 +77,14 @@ public class Pipe extends Scrollable {
                         .overlaps(helicopter.getBoundingCircle(), skullDown));
         }
         return false;
+    }
+    
+    public boolean isScored() {
+    	return isScored;
+    }
+    
+    public void setScored(boolean b) {
+    	isScored = b;
     }
     
     public Rectangle getSkullUp() {

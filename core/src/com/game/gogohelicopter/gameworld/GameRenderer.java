@@ -43,9 +43,6 @@ public class GameRenderer {
 	public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
 		myWorld = world;
 		
-		// The word "this" refers to this instance.
-        // We are setting the instance variables' values to be that of the
-        // parameters passed in from GameScreen.
         this.gameHeight = gameHeight;
         this.midPointY = midPointY;
 
@@ -109,7 +106,17 @@ public class GameRenderer {
                     helicopter.getHeight() / 2.0f, helicopter.getWidth(), helicopter.getHeight(),
                     1, 1, helicopter.getRotation());
         }
-
+        
+        // Convert int into string
+        String score = myWorld.getScore() + "";
+        
+        // Draw shadow first
+        AssetLoader.shadow.draw(batcher, "" + myWorld.getScore(), (136 / 2)
+                - (3 * score.length()), 12);
+        // Draw text
+        AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
+                - (3 * score.length() - 1), 11);
+        
         batcher.end();
 
     }
