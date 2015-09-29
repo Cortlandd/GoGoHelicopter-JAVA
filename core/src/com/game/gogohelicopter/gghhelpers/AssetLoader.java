@@ -13,23 +13,24 @@ public class AssetLoader {
 	
 	public static Texture texture, logoTexture;
     public static TextureRegion logo, gghLogo, bg, grass, helicopter, helicopterDown, helicopterUp, 
-    skullUp, skullDown, bar, playButtonUp, playButtonDown;;
+    skullUp, skullDown, bar, playButtonUp, playButtonDown, ready, gameOver, highScore, scoreboard, 
+    star, noStar, retry;
 
     public static Animation helicopterAnimation;
     
     public static Sound dead;
     
-    public static BitmapFont font, shadow;
+    public static BitmapFont font, shadow, whiteFont;
     public static Preferences prefs;
 
     public static void load() {
 
-    	logoTexture = new Texture(Gdx.files.internal("data/logo.png"));
+    	logoTexture = new Texture(Gdx.files.internal("data/logo-rev3.png"));
     	logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
     	
-    	logo = new TextureRegion(logoTexture, 0, 0, 512, 114);
+    	logo = new TextureRegion(logoTexture, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     	
-        texture = new Texture(Gdx.files.internal("data/texture-rev.png"));
+        texture = new Texture(Gdx.files.internal("data/texture-rev2.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
@@ -58,6 +59,32 @@ public class AssetLoader {
         TextureRegion[] helicopters = { helicopterDown, helicopter, helicopterUp };
         helicopterAnimation = new Animation(0.06f, helicopters);
         helicopterAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+        
+        playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
+		playButtonDown = new TextureRegion(texture, 29, 83, 29, 16);
+		playButtonUp.flip(false, true);
+		playButtonDown.flip(false, true);
+
+		ready = new TextureRegion(texture, 59, 83, 34, 7);
+		ready.flip(false, true);
+
+		retry = new TextureRegion(texture, 59, 110, 33, 7);
+		retry.flip(false, true);
+		
+		gameOver = new TextureRegion(texture, 59, 92, 46, 7);
+		gameOver.flip(false, true);
+
+		scoreboard = new TextureRegion(texture, 111, 83, 97, 37);
+		scoreboard.flip(false, true);
+
+		star = new TextureRegion(texture, 152, 70, 10, 10);
+		noStar = new TextureRegion(texture, 165, 70, 10, 10);
+
+		star.flip(false, true);
+		noStar.flip(false, true);
+
+		highScore = new TextureRegion(texture, 59, 101, 48, 7);
+		highScore.flip(false, true);
 
         skullUp = new TextureRegion(texture, 192, 0, 24, 14);
         // Create by flipping existing skullUp
@@ -72,6 +99,10 @@ public class AssetLoader {
         // Fonts
         font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
         font.getData().setScale(.25f, -.25f);
+        
+        whiteFont = new BitmapFont(Gdx.files.internal("data/whitetext.fnt"));
+		whiteFont.getData().setScale(.1f, -.1f);
+		
         shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
         shadow.getData().setScale(.25f, -.25f);
         

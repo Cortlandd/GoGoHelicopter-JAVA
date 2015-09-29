@@ -36,6 +36,7 @@ public class GameWorld {
 	
 	// Gamestate
 	private GameState currentState;
+	private GameRenderer renderer;
 	
 	public enum GameState {
 		MENU, READY, RUNNING, GAMEOVER, HIGHSCORE
@@ -166,4 +167,8 @@ public class GameWorld {
     public boolean isRunning() {
     	return currentState == GameState.RUNNING;
     }
+
+    public void setRenderer(GameRenderer renderer) {
+		this.renderer = renderer;
+	}
 }

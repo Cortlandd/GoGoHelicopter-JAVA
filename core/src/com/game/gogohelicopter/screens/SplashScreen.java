@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.gogohelicopter.GGHGame;
 import com.game.gogohelicopter.TweenAccessors.SpriteAccessor;
 import com.game.gogohelicopter.gghhelpers.AssetLoader;
-
+  
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -35,12 +35,9 @@ public class SplashScreen implements Screen {
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
-        float desiredWidth = width * .7f;
-        float scale = desiredWidth / sprite.getWidth();
 
-        sprite.setSize(sprite.getWidth() * scale, sprite.getHeight() * scale);
-        sprite.setPosition((width / 2) - (sprite.getWidth() / 2), (height / 2)
-                - (sprite.getHeight() / 2));
+        sprite.setSize(width, height);
+        sprite.setPosition(25, -100);
         setupTween();
         batcher = new SpriteBatch();
     }
