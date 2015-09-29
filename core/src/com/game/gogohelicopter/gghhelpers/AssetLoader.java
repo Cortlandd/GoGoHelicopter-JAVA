@@ -23,7 +23,7 @@ public class AssetLoader {
 
     public static void load() {
 
-        texture = new Texture(Gdx.files.internal("data/texture.png"));
+        texture = new Texture(Gdx.files.internal("data/texture-rev.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         bg = new TextureRegion(texture, 0, 0, 136, 43);
@@ -57,9 +57,9 @@ public class AssetLoader {
         
         // Fonts
         font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
-        ((BitmapFont) font).setScale(.25f, -.25f);
+        font.getData().setScale(.25f, -.25f);
         shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
-        shadow.setScale(.25f, -.25f);
+        shadow.getData().setScale(.25f, -.25f);
     }
 
     public static void dispose() {

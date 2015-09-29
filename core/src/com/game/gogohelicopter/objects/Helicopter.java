@@ -2,6 +2,7 @@ package com.game.gogohelicopter.objects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.game.gogohelicopter.gghhelpers.AssetLoader;
 
 public class Helicopter {
 	// Basically the position, speed, etc.
@@ -16,6 +17,8 @@ public class Helicopter {
 	
 	private Circle boundingCircle;
 	
+	private boolean isAlive;
+	
 	public Helicopter(float x, float y, int width, int height) {
 		// - what its X position should be
 		// - what its Y position should be
@@ -28,6 +31,7 @@ public class Helicopter {
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 460);
         boundingCircle = new Circle();
+        isAlive = true;
 		
 	}
 	
@@ -80,7 +84,13 @@ public class Helicopter {
             if (rotation > 90) {
                 rotation = 90;
             }
-
+        }
+        
+        if (isFalling() || !isAlive) {
+        	rotation += 480 * delta;
+        	if (rotation > 90) {
+        		rotation = 90;
+        	}
         }
 
     }
@@ -89,13 +99,30 @@ public class Helicopter {
         return velocity.y > 110;
     }
 
+    // Animation when helicopter is dead
     public boolean shouldntFlap() {
-        return velocity.y > 70;
+        return velocity.y > 70 || !isAlive;
+    }
+    
+    public boolean isAlive() {
+    	return isAlive;
     }
 	
 	public void onClick() {
-        velocity.y = -140;
+        if (isAlive) {
+        	velocity.y = -140;
+        }
     }
+	
+	public void die() {
+		isAlive = false;
+		velocity.y = 0;
+	}
+	
+	public void decelerate() {
+		// Stop the helicopter accelerating downwards once its crashed.
+		acceleration.y = 0;
+	}
 
     public float getX() {
         return position.x;
