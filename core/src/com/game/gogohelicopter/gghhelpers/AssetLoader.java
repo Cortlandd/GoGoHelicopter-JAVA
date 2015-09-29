@@ -15,8 +15,8 @@ public class AssetLoader {
     public static TextureRegion bg, grass;
 
     public static Animation helicopterAnimation;
-    public static TextureRegion helicopter, helicopterDown, helicopterUp;
-    public static TextureRegion skullUp, skullDown, bar;
+    public static TextureRegion helicopter, helicopterDown, helicopterUp, 
+    skullUp, skullDown, bar, playButtonUp, playButtonDown;
     
     public static Sound dead;
     
