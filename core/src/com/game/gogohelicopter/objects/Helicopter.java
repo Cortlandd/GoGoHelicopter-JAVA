@@ -2,7 +2,6 @@ package com.game.gogohelicopter.objects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
-import com.game.gogohelicopter.gghhelpers.AssetLoader;
 
 public class Helicopter {
 	// Basically the position, speed, etc.
@@ -18,11 +17,12 @@ public class Helicopter {
 	private Circle boundingCircle;
 	
 	private boolean isAlive;
+	private float originalY;
 	
 	public Helicopter(float x, float y, int width, int height) {
-		
 		this.width = width;
         this.height = height;
+        this.originalY = y;
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 460);
@@ -31,25 +31,6 @@ public class Helicopter {
 		
 	}
 	
-	/* So Basically: (Bottom)
-	 * 1. Add scaled acceleration vector to velocity vector. 
-	 * This gives a new velocity. Basically: this is how the
-	 * earth's gravity works. The downward speed increases by
-	 * 9.8 m/s every second.
-
-	 * 2. Flappy Bird physics has a max velocity cap 
-	 * (there's some sort of terminal velocity). I set a velocity.y cap at 200.
-
-	 * 3. We add the updated scaled velocity to the bird's position (this gives
-	 * us our new position).
-	  
-	 * Scaled: multiply the acceleration and velocity vectors by the delta, which
-	 * is the amount of time that has passed since the update method was previously
-	 * called. This has a normalizing effect. 
-	 * 
-	 * By scaling our Vectors with delta, we can achieve frame-rate independent movement.
-	 */
-	
 	// Called when GameWorld.class updates
 	public void update(float delta) {
 
@@ -57,6 +38,12 @@ public class Helicopter {
 
         if (velocity.y > 200) {
             velocity.y = 200;
+        }
+        
+        // Ceiling check
+        if (position.y < 13) {
+        	position.y = -13;
+        	velocity.y = 0;
         }
 
         position.add(velocity.cpy().scl(delta));
@@ -82,6 +69,10 @@ public class Helicopter {
         }
 
     }
+	
+	public void updateReady(float runTime) {
+		position.y = 2 * (float) Math.sin(7 * runTime) + originalY;
+	}
 
     public boolean isFalling() {
         return velocity.y > 110;

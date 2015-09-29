@@ -27,9 +27,8 @@ public class GameWorld {
 	
 	private Helicopter helicopter;
 	private ScrollHandler scroller;
-	
 	private Rectangle ground;
-	
+	private float runTime = 0;
 	private int midPointY;
 	
 	// Create the initial score
@@ -39,10 +38,11 @@ public class GameWorld {
 	private GameState currentState;
 	
 	public enum GameState {
-		READY, RUNNING, GAMEOVER, HIGHSCORE
+		MENU, READY, RUNNING, GAMEOVER, HIGHSCORE
 	}
 	
 	public GameWorld(int midPointY) {
+		currentState = GameState.MENU;
 		this.midPointY = midPointY;
 		// Initialize Helicopter and its position
 		helicopter = new Helicopter(33, midPointY - 5, 17, 12);
@@ -54,9 +54,12 @@ public class GameWorld {
 	}
 	
 	public void update(float delta) {
+		runTime += delta;
 		
 		switch (currentState) {
 			case READY:
+				
+			case MENU:
 				updateReady(delta);
 				break;
 				
@@ -70,7 +73,8 @@ public class GameWorld {
 	}
 	
 	private void updateReady(float delta) {
-		
+		helicopter.updateReady(runTime);
+		scroller.updateReady(delta);
 	}
 	
 	private void updateRunning(float delta) {
@@ -111,9 +115,9 @@ public class GameWorld {
 		return helicopter;
 	}
 	
-	public ScrollHandler getScroller() {
-        return scroller;
-    }
+	public int getMidPointY() {
+		return midPointY;
+	}
 	
 	public int getScore() {
 		return score;
@@ -145,5 +149,21 @@ public class GameWorld {
 
     public boolean isGameOver() {
         return currentState == GameState.GAMEOVER;
+    }
+    
+    public ScrollHandler getScroller() {
+    	return scroller;
+    }
+    
+    public void ready() {
+    	currentState = GameState.READY;
+    }
+    
+    public boolean isMenu() {
+    	return currentState == GameState.MENU;
+    }
+    
+    public boolean isRunning() {
+    	return currentState == GameState.RUNNING;
     }
 }

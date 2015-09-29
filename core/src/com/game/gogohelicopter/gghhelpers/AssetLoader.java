@@ -11,12 +11,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
 	
-	public static Texture texture;
-    public static TextureRegion bg, grass;
+	public static Texture texture, logoTexture;
+    public static TextureRegion logo, gghLogo, bg, grass, helicopter, helicopterDown, helicopterUp, 
+    skullUp, skullDown, bar, playButtonUp, playButtonDown;;
 
     public static Animation helicopterAnimation;
-    public static TextureRegion helicopter, helicopterDown, helicopterUp, 
-    skullUp, skullDown, bar, playButtonUp, playButtonDown;
     
     public static Sound dead;
     
@@ -25,9 +24,22 @@ public class AssetLoader {
 
     public static void load() {
 
+    	logoTexture = new Texture(Gdx.files.internal("data/logo.png"));
+    	logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+    	
+    	logo = new TextureRegion(logoTexture, 0, 0, 512, 114);
+    	
         texture = new Texture(Gdx.files.internal("data/texture-rev.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
+        playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
+        playButtonDown = new TextureRegion(texture, 29, 83, 29, 16);
+        playButtonUp.flip(false, true);
+        playButtonDown.flip(false, true);
+
+        gghLogo = new TextureRegion(texture, 0, 55, 135, 24);
+        gghLogo.flip(false, true);
+        
         bg = new TextureRegion(texture, 0, 0, 136, 43);
         bg.flip(false, true);
 

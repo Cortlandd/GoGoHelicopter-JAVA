@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.game.gogohelicopter.gghhelpers.AssetLoader;
 import com.game.gogohelicopter.screens.GameScreen;
+import com.game.gogohelicopter.screens.SplashScreen;
 
 public class GGHGame extends Game {
 
@@ -18,7 +19,7 @@ public class GGHGame extends Game {
 		
 		// Set this class to the screen created under
 		// com.kilobolt.screens/GameScreen.java
-		setScreen(new GameScreen());
+		setScreen(new SplashScreen(this));
 	}
 	
 	@Override
