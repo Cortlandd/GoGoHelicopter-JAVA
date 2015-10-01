@@ -19,6 +19,7 @@ package com.game.gogohelicopter.gameworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+import com.game.gogohelicopter.AdInterface;
 import com.game.gogohelicopter.gghhelpers.AssetLoader;
 import com.game.gogohelicopter.objects.Helicopter;
 import com.game.gogohelicopter.objects.ScrollHandler;
@@ -30,6 +31,7 @@ public class GameWorld {
 	private Rectangle ground;
 	private float runTime = 0;
 	private int midPointY;
+    private int retryCount = 0;
 	
 	// Create the initial score
 	private int score = 0;
@@ -139,6 +141,23 @@ public class GameWorld {
 	public void start() {
 		currentState = GameState.RUNNING;
 	}
+
+    public void retry() {
+        retryCount++;
+
+        // Show an ad every 4 times
+        if (retryCount % 4 == 0) {
+            AdInterface ad = (AdInterface) Gdx.app;
+            ad.show(new AdInterface.DoneCallback() {
+                @Override
+                public void done() {
+                    restart();
+                }
+            });
+        } else {
+            restart();
+        }
+    }
 	
 	public void restart() {
 		currentState = GameState.READY;

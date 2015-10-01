@@ -6,8 +6,9 @@ import org.robovm.apple.uikit.UIApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
 import com.game.gogohelicopter.GGHGame;
+import com.game.gogohelicopter.AdInterface;
 
-public class IOSLauncher extends IOSApplication.Delegate {
+public class IOSLauncher extends IOSApplication.Delegate implements AdInterface {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
@@ -18,5 +19,11 @@ public class IOSLauncher extends IOSApplication.Delegate {
         NSAutoreleasePool pool = new NSAutoreleasePool();
         UIApplication.main(argv, null, IOSLauncher.class);
         pool.close();
+    }
+
+    @Override
+    public void showAd(AdInterface.DoneCallback callback) {
+        // Unimplemented
+        callback.done();
     }
 }

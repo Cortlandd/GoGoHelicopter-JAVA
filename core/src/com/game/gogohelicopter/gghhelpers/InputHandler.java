@@ -54,7 +54,7 @@ public class InputHandler implements InputProcessor {
 
         if (myWorld.isGameOver() || myWorld.isHighScore()) {
             // Reset all variables, go to GameState.READ
-            myWorld.restart();
+            myWorld.retry();
         }
 
         return true;
@@ -90,7 +90,7 @@ public class InputHandler implements InputProcessor {
             myHelicopter.onClick();
 
             if (myWorld.isGameOver() || myWorld.isHighScore()) {
-                myWorld.restart();
+                myWorld.retry();
             }
 
         }
