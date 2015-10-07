@@ -15,7 +15,7 @@ public class AndroidLauncher extends AndroidApplication implements AdInterface {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		initialize(new GGHGame(), config);
-		Saturnup.initialize(this, "API_KEY");
+		Saturnup.initialize(this, "saturn_jnc41urYd7JFk9dqqgbXKA_up");
 	}
 
     @Override
