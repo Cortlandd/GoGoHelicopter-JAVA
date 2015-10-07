@@ -53,7 +53,6 @@ public class GameWorld {
 		scroller = new ScrollHandler(this, midPointY + 66);
 		// Ground
 		ground = new Rectangle(0, midPointY + 66, 136, 11);
-		currentState = GameState.READY;
 	}
 	
 	public void update(float delta) {
