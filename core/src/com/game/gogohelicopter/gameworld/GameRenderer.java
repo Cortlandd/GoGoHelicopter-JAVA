@@ -85,7 +85,7 @@ public class GameRenderer {
 		shapeRenderer.begin(ShapeType.Filled);
 
 		// Draw Background color
-		shapeRenderer.setColor(132 / 255.0f, 182 / 255.0f, 214 / 255.0f, 1);
+		shapeRenderer.setColor(26 / 255.0f, 103 / 255.0f, 179 / 255.0f, 1);
 		shapeRenderer.rect(0, 0, 136, midPointY + 66);
 
 		// Draw Grass
@@ -291,7 +291,7 @@ public class GameRenderer {
 			batcher.draw(star, 37, midPointY - 15, 10, 10);
 		}
 
-		if (myWorld.getScore() > 120) {
+		if (myWorld.getScore() > 500) {
 			batcher.draw(star, 25, midPointY - 15, 10, 10);
 		}
 

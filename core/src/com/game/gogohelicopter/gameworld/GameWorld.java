@@ -65,7 +65,8 @@ public class GameWorld {
 				updateReady(delta);
 				break;
 				
-			case RUNNING:
+            case RUNNING:
+                score++;
 				updateRunning(delta);
 				break;
 				
@@ -82,7 +83,7 @@ public class GameWorld {
 	private void updateRunning(float delta) {
 		// Add a delta cap so that if the game takes too long
 		// to update, it won't break the collision detection
-		
+
 		if (delta > .15f){
 			delta = .15f;
 		}
@@ -91,11 +92,10 @@ public class GameWorld {
 		scroller.update(delta);
 		
 		// is helicopter is still flying and then collides with the buildings
-		if (scroller.collides(helicopter) && helicopter.isAlive()) {
+        if (scroller.collides(helicopter) && helicopter.isAlive()) {
 			// Clean up on game over
 			scroller.stop();
 			helicopter.die();
-			AssetLoader.dead.play();
 		}
 		
 		if (Intersector.overlaps(helicopter.getBoundingCircle(), ground)) {
@@ -110,7 +110,6 @@ public class GameWorld {
 			}
 		}
 	}
-	
 	
 	// Getter methods
 	public Helicopter getHelicopter() {

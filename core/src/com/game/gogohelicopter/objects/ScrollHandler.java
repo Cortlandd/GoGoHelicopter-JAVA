@@ -12,7 +12,7 @@ public class ScrollHandler {
     
     private GameWorld gameWorld;
 
-    public ScrollHandler(GameWorld gameWorld, float yPos) {
+        public ScrollHandler(GameWorld gameWorld, float yPos) {
     	// Reference the GameWorld to be able to increment the score
     	this.gameWorld = gameWorld;
     	
@@ -79,21 +79,19 @@ public class ScrollHandler {
     	if (!pipe1.isScored()
                 && pipe1.getX() + (pipe1.getWidth() / 2) < helicopter.getX()
                         + helicopter.getWidth()) {
-            addScore(1);
+            //addScore(1);
             pipe1.setScored(true);
-            // Not sure if want coin sound
-            // AssetLoader.coin.play();
         } else if (!pipe2.isScored()
                 && pipe2.getX() + (pipe2.getWidth() / 2) < helicopter.getX()
                         + helicopter.getWidth()) {
-            addScore(1);
+            //addScore(1);
             pipe2.setScored(true);
             // AssetLoader.coin.play();
 
         } else if (!pipe3.isScored()
                 && pipe3.getX() + (pipe3.getWidth() / 2) < helicopter.getX()
                         + helicopter.getWidth()) {
-            addScore(1);
+            //addScore(1);
             pipe3.setScored(true);
             // AssetLoader.coin.play();
 
@@ -102,7 +100,7 @@ public class ScrollHandler {
         return (pipe1.collides(helicopter) || pipe2.collides(helicopter) || pipe3
                 .collides(helicopter));
     }
-    
+
     private void addScore(int increment) {
         gameWorld.addScore(increment);
     }

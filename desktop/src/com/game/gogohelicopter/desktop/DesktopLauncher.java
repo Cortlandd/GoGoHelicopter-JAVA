@@ -5,7 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.game.gogohelicopter.GGHGame;
 import com.game.gogohelicopter.AdInterface;
 
-public class DesktopLauncher implements AdInterface {
+public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Go Go Helicopter";
@@ -14,9 +14,5 @@ public class DesktopLauncher implements AdInterface {
 		new LwjglApplication(new GGHGame(), config);
 	}
 
-    @Override
-    public void showAd(AdInterface.DoneCallback callback) {
-        // Unimplemented
-        callback.done();
-    }
+
 }

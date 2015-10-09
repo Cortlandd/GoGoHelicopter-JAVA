@@ -30,68 +30,68 @@ public class AssetLoader {
     	
     	logo = new TextureRegion(logoTexture, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     	
-        texture = new Texture(Gdx.files.internal("data/texture-rev2.png"));
+        texture = new Texture(Gdx.files.internal("data/Untitled2.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-        playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
+        playButtonUp = new TextureRegion(texture, 2, 349, 118, 61);
         playButtonDown = new TextureRegion(texture, 29, 83, 29, 16);
         playButtonUp.flip(false, true);
         playButtonDown.flip(false, true);
 
-        gghLogo = new TextureRegion(texture, 0, 55, 135, 24);
+        gghLogo = new TextureRegion(texture, 503, 280, 94, 24);
         gghLogo.flip(false, true);
         
-        bg = new TextureRegion(texture, 0, 0, 136, 43);
+        bg = new TextureRegion(texture, 0, 0, 566, 176);
         bg.flip(false, true);
 
-        grass = new TextureRegion(texture, 0, 43, 143, 11);
+        grass = new TextureRegion(texture, 0, 177, 691, 50);
         grass.flip(false, true);
 
-        helicopterDown = new TextureRegion(texture, 136, 0, 17, 12);
+        helicopterDown = new TextureRegion(texture, 570, 3, 69, 41);
         helicopterDown.flip(false, true);
 
-        helicopter = new TextureRegion(texture, 153, 0, 17, 12);
+        helicopter = new TextureRegion(texture, 641, 3, 69, 41);
         helicopter.flip(false, true);
 
-        helicopterUp = new TextureRegion(texture, 170, 0, 17, 12);
+        helicopterUp = new TextureRegion(texture, 710, 3, 69, 41);
         helicopterUp.flip(false, true);
 
         TextureRegion[] helicopters = { helicopterDown, helicopter, helicopterUp };
         helicopterAnimation = new Animation(0.06f, helicopters);
         helicopterAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
         
-        playButtonUp = new TextureRegion(texture, 0, 83, 29, 16);
-		playButtonDown = new TextureRegion(texture, 29, 83, 29, 16);
+        playButtonUp = new TextureRegion(texture, 2, 349, 119, 61);
+		playButtonDown = new TextureRegion(texture, 121, 344, 119, 61);
 		playButtonUp.flip(false, true);
 		playButtonDown.flip(false, true);
 
-		ready = new TextureRegion(texture, 59, 83, 34, 7);
+		ready = new TextureRegion(texture, 244, 346, 143, 32);
 		ready.flip(false, true);
 
-		retry = new TextureRegion(texture, 59, 110, 33, 7);
+		retry = new TextureRegion(texture, 244, 457, 143, 31);
 		retry.flip(false, true);
 		
-		gameOver = new TextureRegion(texture, 59, 92, 46, 7);
+		gameOver = new TextureRegion(texture, 244, 382, 195, 30);
 		gameOver.flip(false, true);
 
-		scoreboard = new TextureRegion(texture, 111, 83, 97, 37);
+		scoreboard = new TextureRegion(texture, 462, 344, 405, 154);
 		scoreboard.flip(false, true);
 
-		star = new TextureRegion(texture, 152, 70, 10, 10);
-		noStar = new TextureRegion(texture, 165, 70, 10, 10);
+		star = new TextureRegion(texture, 643, 290, 32, 42);
+		noStar = new TextureRegion(texture, 689, 290, 32, 42);
 
 		star.flip(false, true);
 		noStar.flip(false, true);
 
-		highScore = new TextureRegion(texture, 59, 101, 48, 7);
+		highScore = new TextureRegion(texture, 244, 420, 201, 31);
 		highScore.flip(false, true);
 
-        skullUp = new TextureRegion(texture, 192, 0, 24, 14);
+        skullUp = new TextureRegion(texture, 801, 0, 98, 63);
         // Create by flipping existing skullUp
         skullDown = new TextureRegion(skullUp);
         skullDown.flip(false, true);
 
-        bar = new TextureRegion(texture, 136, 16, 22, 3);
+        bar = new TextureRegion(texture, 567, 66, 93, 14);
         bar.flip(false, true);
 
         dead = Gdx.audio.newSound(Gdx.files.internal("data/bomb.mp3"));
