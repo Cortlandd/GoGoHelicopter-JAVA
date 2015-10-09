@@ -41,7 +41,7 @@ public class Helicopter {
         }
         
         // Ceiling check
-        if (position.y < 13) {
+        if (position.y < -13) {
         	position.y = -13;
         	velocity.y = 0;
         }
