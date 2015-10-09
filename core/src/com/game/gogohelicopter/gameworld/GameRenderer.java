@@ -244,7 +244,7 @@ public class GameRenderer {
     }
     
     private void drawMenuUI() {
-        batcher.draw(AssetLoader.gghLogo, 136 / 2 - 56, midPointY - 50,
+        batcher.draw(AssetLoader.gghLogo, 136 / 2 - 40, midPointY - 50,
                 AssetLoader.gghLogo.getRegionWidth() / 1.2f,
                 AssetLoader.gghLogo.getRegionHeight() / 1.2f);
 

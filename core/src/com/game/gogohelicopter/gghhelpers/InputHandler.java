@@ -33,8 +33,8 @@ public class InputHandler implements InputProcessor {
 
         menuButtons = new ArrayList<SimpleButton>();
         playButton = new SimpleButton(
-                136 / 2 - (AssetLoader.playButtonUp.getRegionWidth() / 2),
-                midPointY + 50, 29, 16, AssetLoader.playButtonUp,
+                (136 / 2) / 2 + 18,
+                midPointY + 35, 29, 16, AssetLoader.playButtonUp,
                 AssetLoader.playButtonDown);
         menuButtons.add(playButton);
     }
