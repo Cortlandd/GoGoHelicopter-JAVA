@@ -90,7 +90,7 @@ public class GameRenderer {
 
 		// Draw Grass
 		shapeRenderer.setColor(111 / 255.0f, 186 / 255.0f, 45 / 255.0f, 1);
-		shapeRenderer.rect(0, midPointY + 66, 136, 11);
+		shapeRenderer.rect(0, midPointY + 66, 136, 12);
 
 		// Draw Dirt
 		shapeRenderer.setColor(147 / 255.0f, 80 / 255.0f, 27 / 255.0f, 1);

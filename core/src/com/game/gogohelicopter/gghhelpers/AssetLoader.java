@@ -44,7 +44,7 @@ public class AssetLoader {
         bg = new TextureRegion(texture, 0, 0, 566, 176);
         bg.flip(false, true);
 
-        grass = new TextureRegion(texture, 0, 177, 691, 50);
+        grass = new TextureRegion(texture, 0, 177, 691, 49);
         grass.flip(false, true);
 
         helicopterDown = new TextureRegion(texture, 570, 3, 69, 41);
@@ -65,7 +65,7 @@ public class AssetLoader {
 		playButtonUp.flip(false, true);
 		playButtonDown.flip(false, true);
 
-		ready = new TextureRegion(texture, 244, 346, 143, 32);
+		ready = new TextureRegion(texture, 244, 345, 143, 32);
 		ready.flip(false, true);
 
 		retry = new TextureRegion(texture, 244, 457, 143, 31);
