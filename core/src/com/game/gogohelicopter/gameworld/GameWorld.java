@@ -66,7 +66,6 @@ public class GameWorld {
 				break;
 				
             case RUNNING:
-                score++;
 				updateRunning(delta);
 				break;
 				
