@@ -25,7 +25,7 @@ public class AssetLoader {
 
     public static void load() {
 
-    	logoTexture = new Texture(Gdx.files.internal("data/logo-rev3.png"));
+    	logoTexture = new Texture(Gdx.files.internal("data/logo-rev.png"));
     	logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
     	
     	logo = new TextureRegion(logoTexture, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
