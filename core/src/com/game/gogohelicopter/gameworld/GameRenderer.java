@@ -275,23 +275,23 @@ public class GameRenderer {
 		batcher.draw(noStar, 61, midPointY - 15, 10, 10);
 		batcher.draw(noStar, 73, midPointY - 15, 10, 10);
 
-		if (myWorld.getScore() > 2) {
+		if (myWorld.getScore() > 500) {
 			batcher.draw(star, 73, midPointY - 15, 10, 10);
 		}
 
-		if (myWorld.getScore() > 17) {
+		if (myWorld.getScore() > 1000) {
 			batcher.draw(star, 61, midPointY - 15, 10, 10);
 		}
 
-		if (myWorld.getScore() > 50) {
+		if (myWorld.getScore() > 1500) {
 			batcher.draw(star, 49, midPointY - 15, 10, 10);
 		}
 
-		if (myWorld.getScore() > 80) {
+		if (myWorld.getScore() > 2000) {
 			batcher.draw(star, 37, midPointY - 15, 10, 10);
 		}
 
-		if (myWorld.getScore() > 500) {
+		if (myWorld.getScore() > 2500) {
 			batcher.draw(star, 25, midPointY - 15, 10, 10);
 		}
 
