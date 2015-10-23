@@ -15,6 +15,8 @@ import com.saturnup.sdk.question.*;
 
 public class AndroidLauncher extends AndroidApplication implements AdInterface {
 
+    private int adIndex = 0;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +52,30 @@ public class AndroidLauncher extends AndroidApplication implements AdInterface {
 
     @Override
     public void show(final AdInterface.DoneCallback callback) {
-        Saturnup
-            .questionAd(this)
-            .listener(new QuestionAdListener() {
-                @Override
-                public void onResult(QuestionAdResult result) {
-                    callback.done();
-                }
-            })
-        .show();
+        if (adIndex++ % 2 == 0) {
+            Saturnup
+                .questionAd(this)
+                .listener(new QuestionAdListener() {
+                    @Override
+                    public void onResult(QuestionAdResult result) {
+                        callback.done();
+                    }
+                })
+            .show();
+        } else {
+            new AdColonyVideoAd()
+                .withListener(new AdColonyAdListener() {
+                    @Override
+                    public void onAdColonyAdStarted(AdColonyAd ad) {
+
+                    }
+
+                    @Override
+                    public void onAdColonyAdAttemptFinished(AdColonyAd ad) {
+                        callback.done();
+                    }
+                })
+            .show();
+        }
     }
 }
