@@ -25,11 +25,13 @@ public class AssetLoader {
 
     public static void load() {
 
-    	logoTexture = new Texture(Gdx.files.internal("data/logo-rev.png"));
+    	logoTexture = new Texture(Gdx.files.internal("data/logo.png"));
     	logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
     	
-    	logo = new TextureRegion(logoTexture, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    	
+    	logo = new TextureRegion(logoTexture, 184, 6, 144, 121);
+        // Credits Splash Screen Logo
+    	// logo = new TextureRegion(logoTexture, 11, 25, 183, 320);
+
         texture = new Texture(Gdx.files.internal("data/Untitled2.png"));
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
@@ -109,7 +111,7 @@ public class AssetLoader {
         // Create or retrieve preference file
         prefs = Gdx.app.getPreferences("GoGoHelicopter");
         
-        // PRovide default high school of 0
+        // Provide default high school of 0
         if (!prefs.contains("highScore")) {
         	prefs.putInteger("highScore", 0);
         }
